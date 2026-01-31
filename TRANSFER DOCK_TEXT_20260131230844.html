@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>HeartLink ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#000,#444);
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+h1{margin-top:20px}
+
+.photo{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    border:5px solid white;
+    object-fit:cover;
+    margin:20px auto;
+}
+
+/* صفحة الباسورد */
+#lock{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(135deg,#ff5f9e,#ff85c1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+.box{
+    background:rgba(255,255,255,0.25);
+    padding:30px;
+    border-radius:25px;
+    width:85%;
+    max-width:350px;
+    color:#000;
+}
+
+input,button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border-radius:20px;
+    border:none;
+    font-size:16px;
+}
+button{
+    background:#000;
+    color:#fff;
+    cursor:pointer;
+}
+
+/* القلوب */
+.heart{
+    position:fixed;
+    bottom:-20px;
+    font-size:24px;
+    animation:float 8s linear infinite;
+}
+@keyframes float{
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- صفحة الباسورد -->
+<div id="lock">
+  <div class="box">
+    <h2>❤️ Mena Allah ❤️</h2>
+    <p>
+      الصفحة دي معمولالك إنتي وبس  
+      <br>
+      افتحيها وشوفي قد إيه إنتي غالية عندي
+    </p>
+    <input id="passInput" type="password" placeholder="الرقم السري 💍">
+    <button onclick="openPage()">افتحي قلبي 🤍</button>
+  </div>
+</div>
+
+<!-- الصفحة التانية -->
+<h1>🖤 محمد & Mena Allah 🤍</h1>
+
+<img src="us.jpg" class="photo">
+
+<p>
+عارف إن الفترة اللي فاتت زعلتك بكلام كتير  
+<br>
+ولساني ساعات بينطق دبش  
+<br>
+بس حقك عليا، مبيكنش  
+<br><br>
+وعايزك تعرفي إني هفضل أحبك طول عمري  
+<br>
+وهتفضلي عندي أحلى واحدة في حياتي  
+<br>
+وفي نظري أجمل بطّة في الدنيا كلها 🦆🤍
+<br><br>
+<b>Ba7bk Ya Batety 🤍💍</b><br>
+<b>Happy Valentine Day Ya Roo7y 💍🤍</b>
+</p>
+
+<p>📅 من يوم: <b>7 / 8 / 2023</b></p>
+<p id="counter"></p>
+
+<p>
+— دايمًا جنبك وعمري كله ليكي  
+<br>
+<b>محمد 🖤💍</b>
+</p>
+
+<!-- الموسيقى -->
+<audio id="music" loop>
+  <source src="ma3ya.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function openPage(){
+    const pass = document.getElementById("passInput").value;
+
+    if(pass === "1/9"){
+        document.getElementById("lock").style.display="none";
+        document.getElementById("music").play();
+
+        setInterval(()=>{
+            let h=document.createElement("div");
+            h.className="heart";
+            h.innerHTML = Math.random() > 0.5 ? "🤍" : "🖤";
+            h.style.left=Math.random()*100+"vw";
+            document.body.appendChild(h);
+            setTimeout(()=>h.remove(),8000);
+        },300);
+    }
+}
+
+// عداد الأيام من 7 / 8 / 2023
+const startDate = new Date(2023,7,7); // أغسطس
+setInterval(()=>{
+    const now = new Date();
+    const days = Math.floor((now - startDate) / (1000*60*60*24));
+    document.getElementById("counter").innerHTML =
+        "⏳ " + days + " يوم حب";
+},1000);
+</script>
+
+</body>
+</html>
